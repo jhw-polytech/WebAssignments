@@ -1,4 +1,4 @@
-package com.company.day17.homework;
+package Assignments.threads;
 
 import java.util.Random;
 
