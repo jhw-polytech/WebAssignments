@@ -4,17 +4,17 @@ public class HongBankMain {
 
 	public static void main(String[] args) {
 
-		HongBankUtil util = new HongBankUtil();
-
 		HongAccount hongAcc = new HongAccount("홍길동", 10000);
-		new HongFamily("홍길동", hongAcc);
-		new HongFamily("어머니", hongAcc);
-		new HongFamily("아버지", hongAcc);
+
+		HongFamily gildong = new HongFamily("홍길동", hongAcc);
+		HongFamily mother = new HongFamily("어머니", hongAcc);
+		HongFamily father = new HongFamily("아버지", hongAcc);
 
 		try {
-
-
-		} catch(Exception e) {
+			gildong.start();
+			mother.start();
+			father.start();
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 

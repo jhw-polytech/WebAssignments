@@ -19,32 +19,49 @@ public class HongBankUtil {
 
 	}
 
-	public synchronized void deposit(HongAccount hongAccount) {
-		
+	public synchronized void deposit(String who, HongAccount hongAccount) {
+
 		try {
+			notify();
 			int amount = amountDecision();
 			int bal = hongAccount.getBalance();
 			bal += amount;
+
 			hongAccount.setBalance(bal);
-			System.out.println(amount+"원을 입금합니다.");
+			System.out.println(who + " : " + amount + "원을 입금합니다.");
+			System.out.println("현재 잔액은 " + bal + "원입니다.");
+
+			wait();
+			notifyAll();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 	}
 
-	public synchronized void withdraw(HongAccount hongAccount) {
-		
+	public synchronized void withdraw(String who, HongAccount hongAccount) {
+
 		try {
+			notify();
 			int amount = amountDecision();
 			int bal = hongAccount.getBalance();
 			bal -= amount;
+
 			hongAccount.setBalance(bal);
-			System.out.println(amount+"원을 출금합니다.");
+			System.out.println(who + " : " + amount + "원을 출금합니다.");
+			System.out.println("현재 잔액은 " + bal + "원입니다.");
+
+			if (bal < 0) {
+				System.out.printf("출금금액 %d원 => 잔액이 부족하여 출금을 할 수 없습니다.\n", amount);
+				bal += amount;
+			}
+
+			wait();
+			notifyAll();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 	}
 
 }
