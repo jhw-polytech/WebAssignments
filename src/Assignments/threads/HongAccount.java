@@ -1,13 +1,13 @@
-package com.company.day17.homework;
+package Assignments.threads;
 
 public class HongAccount {
 	
 	private String who;
-	private int balance;	
+	private static int balance;	
 	
 	public HongAccount(String who, int balance) {
 		this.who = who;
-		this.balance = balance;
+		HongAccount.balance = balance;
 	}
 
 	/**

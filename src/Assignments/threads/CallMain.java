@@ -1,4 +1,4 @@
-package com.company.day17.homework;
+package Assignments.threads;
 
 public class CallMain {
 	
