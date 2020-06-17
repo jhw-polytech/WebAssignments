@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Play Ball by hyewon</title>
+    <script>
+
+        // 중복 없는 세 개의 숫자 추출
+        var a = Math.floor(Math.random()*10);
+
+        while (true) {
+            var b = Math.floor(Math.random()*10);
+            if (b != a) break;
+        }
+
+        while (true) {
+            var c = Math.floor(Math.random()*10);
+            if (c != a && c != b) break;
+        }
+
+
+        var cnt=0; // 게임횟수를 저장할 변수
+        var out=0; // 아웃횟수를 저장할 변수
+
+        // 사용자에게 정답을 입력받음
+        do {
+
+            // 만약 10회 이상 게임이 누적시 게임 종료
+            if (cnt >= 10) {
+                alert("You Loose ~ 아쉽게도 모든 기회가 소진되었습니다. X_X");
+                break;
+            }
+
+            if (out >= 3) {
+                alert("You Loose ~ 3아웃으로 탈락하셨습니다. X_X");
+                break;
+            }
+
+            var guess = prompt("000~999 사이의 숫자를 입력해 행운의 홈런넘버를 맞춰보세요!");
+
+            // 0~999 사이의 숫자가 입력됐을 때만 게임 진행
+            if (0 <= guess && guess < 999) {
+
+                // 사용자가 입력한 숫자를 세 개로 쪼개서 각기 변수에 대입
+                var x = guess.charAt(0);
+                var y = guess.charAt(1);
+                var z = guess.charAt(2);
+
+                // strike, ball 각 스코어를 저장할 변수
+                var strike = 0;
+                var ball = 0;
+
+                if (x == a && y == b && z == c) {
+                    alert("*~*~ 축하합니다! 행운의 홈런 달성! ~*~*");
+                    break;
+                } else {
+                    if (x == a) strike++;
+                    if (y == b) strike++;
+                    if (z == c) strike++;
+
+                    if(x == b || x == c) ball ++;
+                    if(y == c || y == a) ball ++;
+                    if(z == a || z == b) ball ++;
+                }
+
+                if(strike == 0 && ball ==0){
+                    out++;
+                    alert(`띠로리~ 맞춘 숫자가 하나도 없습니다. ( •́ ̯•̀ ) ${out} OUT!`);
+                } else {
+                    alert(`잘하고 있어!!! ✧*.◟(ˊᗨˋ)◞.*✧ ${strike} strike / ${ball} ball`)
+                }
+
+                cnt++;
+            } else {
+                alert("0~999 사이의 숫자만 입력 가능합니다.");
+            }
+        } while (true);
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
