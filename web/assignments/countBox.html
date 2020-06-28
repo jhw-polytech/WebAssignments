@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>redSquare by hyewon</title>
+    <script>
+
+        window.onload = function () {
+
+
+            let upCnt = 0
+            let downCnt = 10
+
+            let up = document.getElementById("upCnt")
+            let upBtn = document.getElementById("click")
+            upBtn.onclick = function () {
+                upCnt++;
+                up.innerText = upCnt + "번 클릭"
+            }
+
+            let down = document.getElementById("downCnt")
+            let downBtn = document.getElementById("numDown")
+            downBtn.onclick = function () {
+
+                if(downCnt>0) {
+                    downCnt--;
+                    down.innerText = downCnt + "번"
+                }
+            }
+
+        }
+
+
+    </script>
+    <style>
+
+        #buttonTb {
+            border: red dashed 2px;
+            height: 300px;
+            width: 400px;
+            text-align: center;
+        }
+
+        button {
+            height: 60px;
+            width: 100px;
+        }
+
+    </style>
+</head>
+<body>
+
+<div>
+    <table id="buttonTb">
+        <tr>
+            <td id="upCnt">0번 클릭</td>
+            <td>
+                <button id="click">클릭</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button id="numDown">숫자감소</button>
+            </td>
+            <td id="downCnt">10번</td>
+        </tr>
+    </table>
+</div>
+
+</body>
+</html>

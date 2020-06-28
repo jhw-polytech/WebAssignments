@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hangman by hyewon</title>
+    <script>
+
+        var dict = ['honey', 'life', 'best', 'coding', 'mobile']
+        var wrongCnt = 0;
+
+        var selectIdx = Math.floor(Math.random() * dict.length) // 배열 길이만큼의 갯수를 갖는 난수 생성 --> dict 배열에서 단어를 추출할 인덱스
+        var word = dict[selectIdx] // 위에서 생성한 랜덤 인덱스에 해당하는 단어 저장
+        var spelling = []; // 단어의 철자들을 하나씩 저장할 배열 생성
+
+        var letterNumber = spelling.length // 위에서 생성한 랜덤 인덱스에 들어있는 글자의 갯수를 저장
+        var changedLetter = [] // 숨겨진 글자(*)와 맞춘 문자를 표현할 배열
+
+        for (var i = 0; i < word.length; i++) {
+            spelling[i] = word.charAt(i) // 배열에 철자들을 저장
+            changedLetter[i] = "*" // 글자 갯수만큼 *을 찍어 배열에 저장
+        }
+
+
+        // 게임 시작!
+        do {
+
+            guess = prompt("*~*~ H A N G M A N   G A M E ~*~* \n"
+                + "*~ Current Status : " + changedLetter + "\n"
+                + "*~ Life : " + (7 - wrongCnt) + "\n"
+                + "*~ Insert one character \n")
+
+            if (guess.length == 1) {
+
+                // 입력받은 문자가 단어 중에 있다면 *을 문자로 바꿔줌
+                if (spelling.indexOf(guess) != -1) {
+                    changedLetter[spelling.indexOf(guess)] = guess
+                } else {
+                    wrongCnt++
+                    if (wrongCnt >= 7) {
+                        alert("THE MAN IS HANGED!!!!!! YOU ARE LOOSE")
+                        break
+                    }
+                    guess = prompt("Hahaha You're Wrong!!! \n\n"
+                        + "*~*~ H A N G M A N   G A M E ~*~* \n"
+                        + "*~ Current Status : " + changedLetter + "\n"
+                        + "*~ Life : " + (7 - wrongCnt) + "\n"
+                        + "*~ Insert one character \n")
+                }
+            } else {
+                alert("You can insert only one character by one chance")
+            }
+
+            var answer = confirm("You dare to guess???")
+
+            if (answer) {
+                var bigGuess = prompt("Give me your big guess~~~!")
+
+                if (bigGuess == word) {
+                    alert("Congratulations! You got the answer")
+                } else {
+                    alert("You got the wrong answer. Let's try again")
+                }
+            }
+
+        } while (true);
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

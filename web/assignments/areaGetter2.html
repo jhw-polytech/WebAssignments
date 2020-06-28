@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>area getter function by hyewon</title>
+    <script>
+
+        /*
+        *  areaGetter1을 클래스로 구현했기에
+        *  함수를 이용해 구하는 방법도 구현해보았습니다.
+        * */
+
+
+        // 도형 객체를 생성하기 위한 생성자 함수
+        function Shape() {
+
+        }
+
+        // 프로토타입에 넓이 구하는 함수의 원형 저장
+        Shape.prototype.getArea = function () {
+
+        }
+
+        // 정사각형 생성 함수
+        function Square(squ_side) {
+
+            // Shape 함수 상속
+            this.super = Shape;
+            this.super();
+
+            let side = squ_side
+
+
+            // getter, setter
+            this.getSide = function () {
+                return side
+            }
+
+            this.setSide = function (squ_side) {
+                side = squ_side
+            }
+
+            this.getArea = function () {
+                return this.getSide() * this.getSide()
+            }
+        }
+
+
+        // 직사각형 생성 함수
+        function Rectangle(rec_width, rec_height) {
+
+            // Shape 함수 상속
+            this.super = Shape;
+            this.super();
+
+            let width = rec_width
+            let height = rec_height
+
+
+            // getter, setter
+            this.getWidth = function () {
+                return width
+            }
+            this.setWidth = function (rec_width) {
+                width = rec_width
+            }
+
+            this.getHeight = function () {
+                return height
+            }
+            this.setHeight = function (rec_height) {
+                height = rec_height
+            }
+
+            this.getArea = function () {
+                return this.getWidth() * this.getHeight()
+            }
+        }
+
+
+        // 삼각형
+        function Triangle(tr_base, tr_height) {
+
+            this.super = Shape
+            this.super()
+
+            let base = tr_base
+            let height = tr_height
+
+            this.getBase = function () {
+                return base
+            }
+
+            this.setBase = function (tr_base) {
+                base = tr_base
+            }
+
+            this.getHeight = function () {
+                return height
+            }
+
+            this.setHeight = function (tr_height) {
+                height = tr_height
+            }
+
+            this.getArea = function () {
+                return this.getBase() * this.getHeight() / 2
+            }
+        }
+
+        // 원
+        function Circle(cir_radius) {
+
+            this.super = Shape
+            this.super()
+
+            const pie = 3.14
+            let radius = cir_radius
+
+            this.getRadius = function () {
+                return radius
+            }
+            this.setRadius = function (cir_radius) {
+                radius = cir_radius
+            }
+
+            // 소수점 두자리 수까지만 나타내어 반환
+            this.getArea = function () {
+                return Math.floor((this.getRadius() * this.getRadius() * pie) * 100) / 100
+            }
+
+        }
+
+
+        let s = new Square(5)
+        let r = new Rectangle(3, 4)
+        let t = new Triangle(3, 4)
+        let c = new Circle(3)
+
+
+        document.write("[ 정사각형 ]" + "<br>")
+        document.write("변 : " + s.getSide() + "<br>")
+        document.write("넓이 : " + s.getArea() + "<br><br>")
+        document.write("<hr><br>")
+        document.write("[ 직사각형 ]" + "<br>")
+        document.write("가로 : " + r.getWidth() + "<br>")
+        document.write("세로 : " + r.getHeight() + "<br>")
+        document.write("넓이 : " + r.getArea() + "<br><br>")
+        document.write("<hr><br>")
+        document.write("[ 삼각형 ]" + "<br>")
+        document.write("밑변 : " + t.getBase() + "<br>")
+        document.write("높이 : " + t.getHeight() + "<br>")
+        document.write("넓이 : " + t.getArea() + "<br><br>")
+        document.write("<hr><br>")
+        document.write("[ 원 ]" + "<br>")
+        document.write("반지름 : " + c.getRadius() + "<br>")
+        document.write("넓이 : " + c.getArea() + "<br><br>")
+        document.write("<hr><br>")
+
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

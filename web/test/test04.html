@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+
+        window.onload = function() {
+            let idVal = document.getElementById('id').value();
+            if(idVal.length <= 5) alert('아이디는 5글자 이상이어야 합니다.');
+            let genderVal = document.getElementsByName('gender')
+        }
+
+    </script>
+</head>
+<body>
+
+<div>
+    <form action="http://localhost:63342/Test/web/test/test03.html" method="get">
+        아이디 : <input type="text" required="required" name="id"><br>
+        패스워드 : <input type="text" name="pass" required="required"><br>
+        패스워드 확인 : <input type="text" name="passcheck" required="required"><br>
+        성별 : <input type="radio" value="m" name="gender">남 <input type="radio" value="f" name="gender">여 <br>
+        취미 : <input type="checkbox" value="movie" name="hobby">영화감상
+        <input type="checkbox" value="music" name="hobby">음악감상
+        <input type="checkbox" value="reading" name="hobby">독서 <br>
+        <input type="submit" value="전송">
+    </form>
+</div>
+
+</body>
+</html>

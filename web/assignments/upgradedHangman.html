@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <title>Upgraded Hangman Game by hyewon</title>
+
+    <style>
+
+        @font-face {
+            font-family: "doonggeunmo";
+            src: url('//tistory4.daumcdn.net/tistory/214191/skin/images/DungGeunMo.woff2') format('woff2');
+        }
+
+        /* 전체를 한 번 감싸주는 div */
+        #wrapper {
+            width: 800px;
+            height: 800px;
+            border: 3px dashed black;
+            margin: auto;
+            font-family: "doonggeunmo", serif;
+            position: relative;
+        }
+
+        /* 화면에 나타나는 이미지 */
+        .image-box {
+            top: 40px;
+            right: 60px;
+            z-index: 100;
+            position: absolute;
+        }
+
+        /* 시작화면 */
+        #start {
+            width: 800px;
+            height: 800px;
+            top: 0px;
+            left: 0px;
+            margin: auto;
+            background-color: ghostwhite;
+            position: absolute;
+            z-index: 80;
+            text-align: center;
+        }
+
+        /* 본게임 화면 */
+        #game-on {
+            z-index: 100;
+            height: 800px;
+            width: 800px;
+            top: 0px;
+            left: 0px;
+            position: absolute;
+            z-index: 50;
+            background-color: ghostwhite;
+        }
+
+
+        /* 질문이 나타나는 구역 */
+        #question {
+            position: relative;
+            width: 800px;
+            height: 520px;
+            float: left;
+            font-size: 1.5em;
+        }
+
+        #villain-status {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+        }
+
+        .spelling {
+            height: 30px;
+            float: left;
+            margin-right: 5px;
+        }
+
+        #my-status {
+            position: absolute;
+            bottom: 30px;
+            left: 30px;
+        }
+
+        .life {
+            float: left;
+            margin-right: 10px;
+        }
+
+
+        /* 문제 답을 입력하는 구역 */
+        #answer {
+            width: 800px;
+            height: 280px;
+            text-align: center;
+            border-top: 3px dashed black;
+            float: left;
+        }
+
+        input[type="text"] {
+
+        }
+
+        input[type="button"], button, input[type="text"] {
+            background-color: white;
+            border-width: 2px;
+            border-radius: 5px;
+            font-size: 1.2em;
+            font-family: "doonggeunmo", serif;
+            margin: 3px;
+        }
+
+    </style>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+
+        let dictionary = ['hello', 'happy', 'work', 'coffee', 'laptop', 'money', 'mask', 'supermario', 'bagle'] // 문제로 낼 단어들의 배열
+        let choice = Math.floor(Math.random() * 10 - 1) // 0~9 난수 생성
+        let selectedWord = dictionary[choice] // 생성한 난수를 통해 단어 선택
+
+
+        $(document).ready(function () {
+
+            // 시작화면 클릭 시 페이드아웃
+            $('#start').click(function () {
+                $(this).fadeOut(2000)
+            })
+
+
+            // 선택된 단어의 글자수만큼 물방울, 하트 아이콘 생성
+            for (let i = 0; i < selectedWord.length; i++) {
+                $('#villain-status').append('<img class="spelling" src="http://pixelartmaker.com/art/87cff9325d54875.png" width="40">')
+                $('#my-status').append('<img class="life" src="https://dejpknyizje2n.cloudfront.net/marketplace/products/pixel-art-glossy-heart-sticker-1568068833.9046023.png" width="30">')
+            }
+
+
+            // 버튼 눌러 답 맞추기
+
+            $('input[name="charBtn]').click(function() {
+
+            })
+
+
+            // 틀렸을 시 화면히 흔들리며 하트가 줄어듦
+
+
+            // 맞췄을 시 거북몬 이미지가 흔들리며 물방울 아이콘이 맞춘 철자로 바뀜
+
+
+            // 필살기(전체 철자)를 입력해 맞췄을 시 거북몬이 쓰러지며 승리 문구가 나옴
+
+
+        })
+
+    </script>
+</head>
+<body>
+<div id="wrapper">
+
+    <div class="image-box">
+        <img src="http://pixelartmaker.com/art/2565548d2ec0cbf.png"
+             height="350px" top="100px">
+    </div>
+
+    <!-- 게임의 시작을 알리는 화면  -->
+    <div id="start">
+        야생의 철산거북몬이(가) 나타났다!!!<br>
+        무척 흉악한 놈으로 알려져있다.<br>
+        단어를 맞춰 해치우자!!!! (click▼) <br>
+
+    </div>
+
+
+    <!--  실제 게임이 실행되는 화면  -->
+    <div id="game-on">
+
+        <!-- 문제를 맞추는 화면 -->
+        <div id="question">
+            <div id="villain-status">
+                <p style="text-decoration: underline;"> &nbsp;철산 거북몬 Lv300 &nbsp; </p>
+
+            </div>
+
+            <div id="my-status">
+                <p style="text-decoration: underline;"> &nbsp; 정의 구현가 Lv3 &nbsp; </p>
+
+
+            </div>
+        </div>
+
+
+        <!-- 정답을 입력하는 화면 -->
+        <div id="answer">
+            <br>
+            <h3>망설이지 말고 해치우자!!!</h3>
+            <form id="submit-whole-answer">
+                <input type="text" width="200px" name="">
+                <button type="submit">필살기!</button>
+            </form>
+            <br>
+            <br>
+            <div id="keyboards">
+                <form id="submit-char">
+                    <input type="button" value="q" name="charBtn">
+                    <input type="button" value="w" name="charBtn">
+                    <input type="button" value="e" name="charBtn">
+                    <input type="button" value="r" name="charBtn">
+                    <input type="button" value="t" name="charBtn">
+                    <input type="button" value="y" name="charBtn">
+                    <input type="button" value="u" name="charBtn">
+                    <input type="button" value="i" name="charBtn">
+                    <input type="button" value="o" name="charBtn">
+                    <input type="button" value="p" name="charBtn">
+                    <br>
+                    <input type="button" value="a" name="charBtn">
+                    <input type="button" value="s" name="charBtn">
+                    <input type="button" value="d" name="charBtn">
+                    <input type="button" value="f" name="charBtn">
+                    <input type="button" value="g" name="charBtn">
+                    <input type="button" value="h" name="charBtn">
+                    <input type="button" value="j" name="charBtn">
+                    <input type="button" value="k" name="charBtn">
+                    <input type="button" value="l" name="charBtn">
+                    <br>
+                    <input type="button" value="z" name="charBtn">
+                    <input type="button" value="x" name="charBtn">
+                    <input type="button" value="c" name="charBtn">
+                    <input type="button" value="v" name="charBtn">
+                    <input type="button" value="b" name="charBtn">
+                    <input type="button" value="n" name="charBtn">
+                    <input type="button" value="m" name="charBtn">
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

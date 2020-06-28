@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>area getter by hyewon</title>
+    <script>
+
+
+        // 정사각형 넓이를 구하는 클래스
+        const Square = class {
+
+            constructor(width, height) {
+                this.width = width
+                this.height = height
+            }
+
+            area() {
+                return this.height * this.width
+            }
+        }
+
+        // 직사각형 넓이를 구하는 클래스
+        const Rectangle = class {
+
+            constructor(width, height) {
+                this.width = width
+                this.height = height
+            }
+
+            area() {
+                return this.width * this.height
+            }
+
+        }
+
+
+        // 삼각형의 넓이를 구하는 클래스
+        const Triangle = class {
+
+            constructor(width, height) {
+                this.width = width
+                this.height = height
+            }
+
+            area() {
+                return this.width * this.height / 2
+            }
+
+        }
+
+
+        // 원의 넓이를 구하는 클래스
+        const Circle = class {
+            pie = 3.14
+
+            constructor(diameter) {
+                this.diameter = diameter
+            }
+
+            area() {
+                return Math.floor(this.diameter * this.pie);
+            }
+        }
+
+        let width = 0
+        let height = 0
+        let diameter = 0
+        let answer = 0
+
+        let choice = prompt("넓이를 구하려는 도형을 골라주세요. \n 1)정사각형 2)직사각형 3)삼각형 4)원")
+
+        let choicenum = parseInt(choice);
+
+        switch (choicenum) {
+            case 1:
+                width = prompt("너비를 입력하세요.")
+                height = prompt("높이를 입력하세요.")
+                answer = new Square(width, height)
+                break;
+            case 2:
+                width = prompt("너비를 입력하세요.")
+                height = prompt("높이를 입력하세요.")
+                answer = new Rectangle(width, height)
+                break;
+            case 3:
+                width = prompt("너비를 입력하세요.")
+                height = prompt("높이를 입력하세요.")
+                answer = new Triangle(width, height)
+                break;
+            case 4:
+                diameter = prompt("지름을 입력하세요.")
+                answer = new Circle(diameter)
+                break;
+        }
+
+        alert("선택하신 도형의 면적은 " + answer.area() + "입니다.")
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

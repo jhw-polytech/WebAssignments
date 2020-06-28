@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>resize by hyewon</title>
+    <script>
+
+        var sub = window.open("", "", "width = 400, height = 500")
+
+        let width = screen.width
+        let height = screen.height
+
+        sub.moveBy(0, 0)
+        sub.resizeBy(width, height)
+
+        let id = setInterval(function () {
+            sub.moveBy(20, 20);
+            sub.resizeBy(-30, -30)
+        }, 1000)
+
+        setTimeout(function () {
+            clearInterval(id)
+        }, 10000)
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

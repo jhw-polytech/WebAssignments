@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>369 by hyewon</title>
+    <script>
+        var selected;
+
+        // prompt로 사용자의 선택값 받아오기
+        while (true) {
+            selected = Number(prompt("10~100 사이의 숫자를 입력해주세요."));
+            // 10~100 사이의 숫자가 아니면 다시 입력받기
+            if (10 < selected && selected < 100) {
+                break;
+            } else {
+                alert("10~100 사이의 정수만 입력 가능합니다." +
+                    "다시 입력해주세요.")
+            }
+        }
+
+        var frontno;
+        var backno;
+        var answer;
+
+        // 1부터 사용자가 입력한 숫자까지
+        for (var i = 1; i <= selected; i++) {
+
+            // 숫자를 10의자리 숫자와 1의자리 숫자로 쪼개어 변수에 대입
+            frontno = Math.floor(i / 10);
+            backno = i % 10;
+            answer = i;
+
+            if (frontno != 0 && backno != 0) {
+                if (frontno % 3 == 0 || backno % 3 == 0) answer = "짝";
+                if (frontno % 3 == 0 && backno % 3 == 0) answer = "짝짝";
+            } else if (frontno == 0 && backno % 3 == 0) answer = "짝";
+
+            // 10의 배수일 경우 뽀숑을 출력
+            if (i % 10 == 0 && answer == i) { // '짝'이 포함되어 있지 않은 순서에 뽀숑이 들어가는 경우 뽀숑만 출력
+                answer = "";
+                for (var j = 0; j < frontno; j++) { // 십의자리 숫자만큼 '뽀' 출력
+                    answer += '뽀'
+                }
+                answer += '숑';
+            } else if (i % 10 == 0 && answer != i) { // '짝'이 1개 이상 포함된 순서에 뽀숑이 들어가는 경우 짝과 뽀숑을 함께 출력
+                for (var j = 0; j < frontno; j++) { // 십의자리 숫자만큼 '뽀' 출력
+                    answer += '뽀'
+                }
+                answer += '숑';
+            }
+            document.write(answer + '<br>');
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

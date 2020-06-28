@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        class Shape {
+
+            constructor(name, width, height) {
+                this.name = name;
+                this.width = width;
+                this.height = height;
+            }
+
+            get width() {
+                return this._width
+            }
+
+            get height() {
+                return this._height
+            }
+
+            set width(width) {
+                this._width = width;
+            }
+
+            set height(height) {
+                this._height = height;
+            }
+        }
+
+        Shape.prototype.area = '';
+
+        class Triangle extends Shape {
+
+            constructor(width, height) {
+                super(width, height)
+            }
+        }
+
+        Triangle.prototype.area = function (width, height) {
+
+            return (width * height) / 2;
+        }
+
+        class Rectangle extends Shape {
+
+            constructor(width, height) {
+                super(width, height)
+
+            }
+
+        }
+
+        Rectangle.prototype.area = function (width, height) {
+
+            return (width * height);
+        }
+
+
+        class Square extends Shape {
+
+            constructor(width, height) {
+                super(width, height)
+
+            }
+
+        }
+
+        Square.prototype.area = function (width, height) {
+
+            return (width * height);
+        }
+
+        class Circle extends Shape {
+
+            constructor(width, height) {
+                super(width, height)
+
+            }
+
+        }
+
+        Circle.prototype.area = function (width, height) {
+
+            return (width * height * (3.14));
+        }
+
+
+        alert('도형의 넓이를 구해보자');
+        let choice = prompt('삼각형 : 1, 직사각형 : 2, 정사각형 : 3, 원 : 4');
+
+        let choicenum = parseInt(choice);
+        alert(choicenum);			//test
+
+        switch (choicenum) {
+
+            case 1 :
+                let triangle = new Triangle(1, 1);
+                triangle.width = prompt('밑변의 길이를 입력하세요');
+                let tri_width = parseInt(triangle.width);
+                triangle.height = prompt('높이의 길이를 입력하세요');
+                let tri_height = parseInt(triangle.height);
+
+                let gmt = Triangle.prototype.area(tri_width, tri_height);
+                alert('삼각형의 넓이는' + gmt + ' 입니다 ');
+                break;
+
+            case 2 :
+                let rectangle = new Rectangle(1, 1);
+                rectangle.width = prompt('밑변의 길이를 입력하세요');
+                let rec_width = parseInt(rectangle.width);
+                rectangle.height = prompt('높이의 길이를 입력하세요');
+                let rec_height = parseInt(rectangle.height);
+
+                let r = Rectangle.prototype.area(rec_width, rec_height);
+                alert('직사각형의 넓이는' + r + ' 입니다 ');
+                break;
+
+            case 3 :
+                let square = new Square(1, 1);
+                square.width = prompt('한변의 길이를 입력하세요');
+                let squ_width = parseInt(square.width);
+                let squ_height = squ_width;
+
+                let s = Square.prototype.area(squ_width, squ_height);
+                alert('정사각형의 넓이는' + s + ' 입니다 ');
+                break;
+
+            case 4 :
+                let circle = new Circle(1, 1);
+                Shapes.width = prompt('반지름 길이를 입력하세요');
+                let cir_radius = parseInt(Shapes.width);
+
+
+                let c = Circle.prototype.area(cir_radius, cir_radius);
+                alert('원의 넓이는' + c + ' 입니다 ');
+                break;
+
+        }
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

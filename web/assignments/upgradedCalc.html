@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator by hyewon</title>
+    <script>
+
+        function add(clicked) {
+            let display = document.getElementById('display');
+            display.value += clicked;
+        }
+
+        function calculate() {
+            let display = document.getElementById('display');
+            let result = eval(display.value);
+            display.value = result;
+        }
+
+        function clear() {
+            document.getElementById('display').value ="";
+        }
+
+    </script>
+    <style>
+
+        table {
+            width: 230px;
+            height: 300px;
+            border: 1px solid black;
+        }
+
+        input {
+            width: 96%;
+            height: 100%;
+            font-size: 1.2em;
+        }
+
+    </style>
+</head>
+<body>
+
+<table>
+    <tr>
+        <td colspan="4"><input type="text" id="display"></td>
+    </tr>
+    <tr>
+        <td><input type="button" style="width: 100%" value="7" onclick="add(7)"/></td>
+        <td><input type="button" style="width: 100%" value="8" onclick="add(8)"/></td>
+        <td><input type="button" style="width: 100%" value="9" onclick="add(9)"/></td>
+        <td><input type="button" style="width: 100%" value="&#47;"/></td>
+    </tr>
+    <tr>
+        <td><input type="button" style="width: 100%" value="4" onclick="add(4)"/></td>
+        <td><input type="button" style="width: 100%" value="5" onclick="add(5)"/></td>
+        <td><input type="button" style="width: 100%" value="6" onclick="add(6)"/></td>
+        <td><input type="button" style="width: 100%" value="&#42;" onclick="add('*')"/></td>
+    </tr>
+    <tr>
+        <td><input type="button" style="width: 100%" value="1" onclick="add(1)"/></td>
+        <td><input type="button" style="width: 100%" value="2" onclick="add(2)"/></td>
+        <td><input type="button" style="width: 100%" value="3" onclick="add(3)"/></td>
+        <td><input type="button" style="width: 100%" value="&#45;" onclick="add('-')"/></td>
+    </tr>
+    <tr>
+        <td><input type="button" style="width: 100%" value="0" onclick="add(0)"/></td>
+        <td><input type="button" style="width: 100%" value="." onclick="add('.')"/></td>
+        <td><input type="button" style="width: 100%" value="&#43;" onclick="add('+')"/></td>
+        <td><input type="button" style="width: 100%" value="&#37;" onclick="add('%')"/></td>
+    </tr>
+    <tr>
+        <td colspan="2"><input type="button" style="width: 100%" value="&#61;" onclick="calculate()"/></td>
+        <td colspan="2"><input type="button" style="width: 100%" value="Clear" onclick="clear()"/></td>
+    </tr>
+
+</table>
+
+</body>
+</html>
